@@ -12,11 +12,16 @@ so you need to build it from source or build it using Nix. I haven't tried
 building it from source yet, but I found it's not that hard to install it using
 Nix if you know some tweaks required.
 
+![ghostty](./assets/ghostty.png)
+
+![ghostty-on-ubuntu-22.04](./assets/ghostty_with_fastfetch.png)
+
 Steps to install Ghostty
 ------------------------
 
 1. Install Nix
-2. Enable flake + home-manager
+2. Add configurations for Nix
+3. Install home-manager + ghostty
 
 DONE!
 
@@ -34,11 +39,14 @@ $ nix-shell -p hello
 Hello, world!
 ```
 
-### 2. Enable flake + home-manager
+### 2. Add configurations for Nix
 
 [Flake](https://nixos.wiki/wiki/Flakes) is an experimental (but widely accepted)
 feature of Nix, which manages inputs and outputs of your Nix configurations,
 like `go.mod` and `go.sum` in Golang.
+
+Ghostty provides the flake file (and not available in home-manager's default registry),
+so you'll need to enable it.
 
 According to [Wiki](https://nix-community.github.io/home-manager), you can put
 the following line in `~/.config/nix/nix.conf`.
@@ -46,6 +54,9 @@ the following line in `~/.config/nix/nix.conf`.
 ```
 experimental-features = nix-command flakes
 ```
+
+> [!Note]
+> Maybe I can manage this configuration file with home-manager...?
 
 ### 3. Install home-manager _and_ ghostty
 
